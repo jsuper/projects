@@ -7,8 +7,8 @@ import java.net.MalformedURLException;
 import java.net.URL;
 import java.nio.charset.Charset;
 
-import org.tony.dic.core.Ctx;
 import org.tony.dic.core.query.Query;
+import org.tony.opendict.core.Ctx;
 
 public class NetQuery implements Query{
 	
