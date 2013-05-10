@@ -1,0 +1,739 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<form title="Configure Radio Link" callback="com.ericsson.mlcraft.im.app.rl.common.config.configRadioLink.RadioTerminalCallback" onSave="refresh" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://form.xsd">
+  <group y="0" x="0">
+    <!--  Near end parameters   -->
+    <xgroup y="0" title="Near End Radio Terminal" x="0" weight="0.0,0.0">    
+        <label y="0" /> <!-- empty row after the headline -->
+        <group x="0" y="0" weight="0.0,0.0" insets="0,0,0,0">       
+		<label id="RAUSlotStateDescMajor" icon="16x16/Warning.gif" y="0" weight="1,0" text="&lt;html&gt;RAU does not support the current configuration.&lt;br&gt;Transmitter is active/can be activated but the radio link&lt;br&gt;may have degraded performance.&lt;/html&gt;" visible="false"/>
+		<label id="RAUSlotStateDescCritical" icon="16x16/Warning.gif" y="0" weight="1,0"  text="&lt;html&gt;RAU does not support the current configuration&lt;br&gt;and transmitter has been disabled.&lt;/html&gt;" visible="false"/>
+		</group>
+        <!-- Radio and MMU part part -->
+        <group x="0" y="1" weight="0.0,0.0" insets="0,0,0,0"> 
+          <group title="Ra1" border="true" x="0" weight="0.0,0.0" insets="0,0,0,0">
+            <label y="0" text="%selected.moid.NearEndConfig.LowSlotMMUMocMoi% %selected.moid.NearEndConfig.LowSlotMMUSlotNoInfo%" id="NearEndConfig.LowSlotMMUMocMoi"/>
+            <label y="1" text="%selected.moid.NearEndConfig.LowSlotRAUMocMoi%" id ="NearEndConfig.LowSlotRAUMocMoi"/>
+          </group>
+          <group title="Ra2" border="true" x="1" id="NearEndHighSlotRadioConfig" weight="0.0,0.0" insets="0,0,0,0">
+            <label y="0" text="%selected.moid.NearEndConfig.HighSlotMMUMocMoi% %selected.moid.NearEndConfig.HighSlotMMUSlotNoInfo%" id="NearEndConfig.HighSlotMMUMocMoi"/>
+            <label y="1" text="%selected.moid.NearEndConfig.HighSlotRAUMocMoi%" id ="NearEndConfig.HighSlotRAUMocMoi" />
+          </group>
+          <space x="1" y="0" weight="1.0,1.0"/>
+        </group>
+        <space x="1" y="1" weight="1.0,0.0"/>
+        
+        <!-- Terminal part part -->    
+        <group x="0" y="2" title="Terminal" id="TerminalNearBasic" border="true" weight="0.0,0.0" insets="0,0,0,0">
+          <attribute id="NearEndConfig.NearEndID" x="1" y="0" title="Terminal ID"/>
+          <attribute id = "NearEndConfig.FarEndID" x="1" y="1" title="Far End ID"/>
+          <attribute id = "NearEndConfig.RadioIdCheck" y="2" title="Radio ID Check"/>
+          <licenselabel icon="../res/images/icons/16x16/mltn_license.gif" text="" y="3"/>
+          <!-- Support for SD capability -->
+          <attribute id="NearEndConfig.ProtectionMode" title="Mode" x="1" y="3"/>
+          <space x="2" y="0" weight="4.0,1.0"/>
+        </group>
+        <space x="1" y="2" weight="1.0,0.0"/>
+
+        <label id="NearEndConfig.AdaptiveManualModeText" x="0" y="3" text="&lt;html>&lt;span style=color:red>&lt;b>NOTE: No Capacity attributes can be changed since Adaptive Modulation Mode is Manual&lt;/b>&lt;/span>&lt;/html>" visible="false"/>
+             
+        <!-- Capacity part, bit-pipe not supported -->
+        <group title="Capacity" x="0" y="4" id="NearEndConfig.CapacityGroup" visible="false" border="true" weight="0.0,0.0" insets="0,0,0,0">
+          <licenselabel icon="../res/images/icons/16x16/mltn_license.gif" id="CapLicenseNear" text="" y="0"/>
+          <space x="1" y="0" weight="0.1,2.0"/>
+          <attribute id="NearEndConfig.TrafficCapMod" x="2" y="0" title="Capacity &#8212; Modulation"/>
+          <attribute id="NearEndConfig.HighSlotTrafficCapMod" visible="false" x="2" y="1"/>
+          <space x="3" y="0" weight="2.0,2.0"/>
+        </group>
+        
+        <!-- Capacity part, bit-pipe is supported -->   
+        <group x="0"  y="4" title="Capacity" id="NearEndConfig.ChannelSpacingOrBitpipeGroup" visible="false" border="true" weight="0.0,0.0" insets="0,0,0,0" >
+
+          
+          <group x="0" y="1" weight="0.0,0.0" insets="0,0,0,0" visible="true">
+            <group x="0" y="0" id="NearEndConfig.XpicGroup" weight="0.0,0.0" insets="0,0,0,0" visible="true">
+               <licenselabel id="NearEndXpicGroupIcon" icon="../res/images/icons/16x16/mltn_license.gif" x="0" y="0" text="" />
+	      	   <space x="1" y="0" weight="1.0,0.0"/>
+               <attribute id="NearEndConfig.Xpic" x="2" y="0" title="Enable XPIC"/>
+            </group>
+			          
+      	    <space x="2" y="0" weight="1.0,0.0"/>
+            
+            
+            <group x="3" y="0" id="AdaptiveGroup" weight="0.0,0.0" insets="0,0,0,0" visible="true">
+               <licenselabel id="NearEndAdaptiveGroupIcon" icon="../res/images/icons/16x16/mltn_license.gif" x="0" y="0" text="" />
+	      	   <space x="1" y="0" weight="1.0,0.0"/>
+               <attribute id="NearEndConfig.Adaptive" x="2" y="0" title="Adaptive Modulation"/>
+            </group>
+          </group>
+          
+
+          <group y="2" weight="0.1,0.0" insets="0,0,0,0" visible="true">
+            <space y="0" weight="1.0,0.0"/>
+            <group y="1" visible="true" fill="horizontal" ipadx="20">
+             <attribute id="NearEndConfig.ChannelSpacing" x="2" y="0" title="Channel Spacing (MHz)"/>
+		     <attribute id="NearEndConfig.SpectrumEfficiencyClass" x="2" y="1" title="Reference Spectrum Efficiency Class" visible="true"/>
+        
+			  <licenselabel id="MaxCapacityModulationGroupIcon" icon="../res/images/icons/16x16/mltn_license.gif" text="" y="2"/>
+		      <attribute id="NearEndConfig.MaxCapacityModulation" x="2" y="2" title="Max Capacity &#8212; Modulation"/>
+        
+			  <licenselabel id="CapacityModulationIcon" icon="../res/images/icons/16x16/mltn_license.gif" text="" y="3"/>
+	    
+              <attribute id="NearEndConfig.BitPipeCapacityModulation" x="2" y="3" title="Capacity &#8212; Modulation" visible="true"/>
+	          <attribute id="NearEndConfig.MinBitPipeCapacityModulation" x="2" y="3" title="Min Capacity &#8212; Modulation" visible="false"/>
+        	  
+        	  <attribute id="NearEndConfig.FadingRates" x="2" y="4" visible="false" title ="Fading Rates"/>
+        	  <licenselabel id="NearEndConfig.NumberOfE1GroupIcon" icon="../res/images/icons/16x16/mltn_license.gif" text="" y="4"/>
+        	  <attribute id="NearEndConfig.NumberOfE1" x="2" y="5" title="Number of %selected.moid.NearEndConfig.TribName%s" visible="true"/>
+            </group>
+
+            <group y="6" id="EthernetCapacityGroup">
+ 		      <space x="0" y="0"/> 
+              <attribute id="NearEndConfig.EthernetCapacity" x="1" y="0" title="Packet Link Capacity (Config)" visible="false"/>
+            </group>
+
+            <group y="7" id="MaxEthernetCapacityGroup">
+ 		      <space x="0" y="0"/> 
+		      <attribute id="NearEndConfig.MaxEthernetCapacity" x="1" y="0" title="Max Packet Link Capacity (Config)" visible="true"/>
+            </group>
+
+            <group y="8" id="MinEthernetCapacityGroup">
+ 		     <space x="0" y="0"/> 
+              <attribute id="NearEndConfig.EthernetCapacity" x="1" y="0" title="Min Packet Link Capacity (Config)" visible="false"/>
+            </group>
+
+            <group y="9" id="NearEndActualAndDesiredDiffersGroup" weight="0.0,0.0" insets="0,0,0,0" visible="true">
+              <attribute id="NearEndConfig.ActualAndDesiredDiffers" x="1" y="0" title="" visible="false" />
+              <!--  Capability Row index is the actual value set in the node to indicate channel spacing, capacity and modulation-->
+              <attribute id="NearEndConfig.TerminalCapabilityRowIndex" y="1" visible="false" />
+              <attribute id="NearEndConfig.TerminalCapabilityMaxRowIndex" y="2" visible="false" />
+              <attribute id="NearEndConfig.ActualNumberOfE1" y="3" visible="false"/>
+              <attribute id="NearEndConfig.DesiredNumberOfE1" y="4" visible="false"/>
+              <attribute id="NearEndConfig.ActualEthernetCapacity" y="5" visible="false"/>
+              <attribute id="NearEndConfig.TribName" y="6" visible="false"/>
+            </group>
+          </group>
+         <space x="2" y="0" weight="4.0,1.0"/> 
+        </group>
+        
+       <!-- RF part -->
+        <group title="RF" x="0" y="5" border="true" weight="0.0,0.0" insets="0,0,0,0">
+          <group x="0" weight="0.0,0.0" insets="0,0,0,0">
+            <label text="&lt;html&gt;&lt;b&gt;Ra1&lt;/b&gt;&lt;/html&gt;" x="1" anchor="east" />
+            <attribute id="NearEndConfig.LowSlotTxFrequency" y="1" title="Tx Freq. (MHz)" />
+            <attribute id="NearEndConfig.LowSlotRxFrequency" y="2" title="Rx Freq. (MHz)" />
+            <attribute id="NearEndConfig.LowSlotPowerMode" y="3" title="Output Power Mode" />
+            <attribute id="NearEndConfig.LowSlotOutputPower" y="4" title="Output Power (dBm)" />
+            <attribute id="NearEndConfig.LowSlotAtpcMaxOutputPower" y="5"  title="Max Output Power (dBm)"/>
+            <attribute id="NearEndConfig.LowSlotAtpcSelectedInputPowerFar" y="6" title="&lt;html&gt;&lt;nobr&gt;Target Input Power&lt;br&gt;for Far End (dBm)&lt;/nobr&gt;&lt;/html&gt;"/>
+            <attribute id="NearEndConfig.LowSlotTransmitterStatus" y="7" title="Transmitter On" />
+          </group>
+          <group x="1" id="NearEndHighSlotRFConfig" weight="0.0,0.0" insets="0,0,0,0">
+            <label text="&lt;html&gt;&lt;b&gt;Ra2&lt;/b&gt;&lt;/html&gt;" x="1"/>
+            <group id="NearEndHighSlotAlignSpaceWhenInSD" y="1" insets="27,0,0,0" visible="false">
+                <space />
+            </group>
+            <attribute id="NearEndConfig.HighSlotTxFrequency" y="1" title="" />
+            <attribute id="NearEndConfig.HighSlotRxFrequency" y="2" title="" />
+            <attribute id="NearEndConfig.HighSlotPowerMode" y="3" title="" />
+            <attribute id="NearEndConfig.HighSlotOutputPower" y="4" title="" />
+            <attribute id="NearEndConfig.HighSlotAtpcMaxOutputPower" y="5"  title=""/>
+            <attribute id="NearEndConfig.HighSlotAtpcSelectedInputPowerFar" y="6" title="&lt;html&gt;&lt;font color='white'&gt;a&lt;br&gt;a&lt;/font&gt;&lt;/html&gt;"/>
+            <attribute id="NearEndConfig.HighSlotTransmitterStatus" y="7" title="" />
+          </group>
+          <space x="2" y="0" weight="1.0,0.0" />
+        </group> 
+        <space x="1" y="4" weight="1.0,1.0"/>
+        
+        <!-- XPIC part   -->
+        
+        <group title="XPIC" id="NearEndConfig.XpicGroup" y="6" border="true" visible="true">
+           <group id="NearEndLowSlotXpicConfig" x="0" y="0" weight="0.0,0.0">
+             <attribute id = "NearEndConfig.LowSlotMMUMocMoi" y="0" title=""/>
+             <attribute id = "NearEndConfig.LowSlotXpicCompanionSlot" y="2" title="Companion Pos"/>
+             <attribute id = "NearEndConfig.LowSlotMMUXpicSupport" y="3" visible="false"/>
+           </group>
+           <group id="HighSlotXpicConfig" x="1" y="0" weight="0.0,0.0">
+             <attribute id = "NearEndConfig.HighSlotMMUMocMoi" y="0" title=""/>
+             <attribute id = "NearEndConfig.HighSlotXpicCompanionSlot" y="2" title=""/>
+             <attribute id = "NearEndConfig.HighSlotMMUXpicSupport" y="3" visible="false"/>
+           </group>
+           <space x="2" y="0" weight="1.0,0.0"/>
+           <group id="NearEndXpicRestore" x="0" y="2">
+             <button id="XpicRestoreButton" title="Restore XPIC after Fault" 
+                 command="Mgt.SetAttributes(moid:'%selected.moid.NearEndConfig%','XPICRestore':1)"
+                 y="0" visible="false" onClick="refresh"/>
+               <attribute id="NearEndConfig.ChannelMode" visible="false"/>
+               <attribute id="NearEndConfig.ChannelModeOperStatus" visible="false"/>
+           </group>
+        </group>
+        <space x="1" y="6" weight="1.0,1.0"/>
+        
+		<group>
+		  <attribute id="NearEndConfig.NearEndIDMLCSHolder" y="0" visible="false"/>
+		  <attribute id = "NearEndConfig.FarEndIDMLCSHolder" y="1" visible="false"/>
+		</group>
+		
+      </xgroup>  
+      
+      <!--  Near End Advanced Parameters starts here --> 
+      
+       
+      <xgroup title="Advanced" y="1" expanded="false" lazy="true"> 
+        <label y="0" /> <!-- empty row after the headline --> 
+        
+        <!-- If Near End is a MLCS node the Terminal group shall be Advanced settings -->      
+        <group x="0" y="1" title="Terminal" id="TerminalNearAdvanced" visible="false" border="true" weight="0.0,0.0" insets="0,0,0,0">
+          <attribute id="NearEndConfig.NearEndIDMLCS" x="1" y="0" title="Terminal ID"/>
+          <attribute id = "NearEndConfig.FarEndIDMLCS" x="1" y="1" title="Far End ID"/>
+          <attribute id = "NearEndConfig.RadioIdCheck" y="2" title="Radio ID Check"/>
+          <attribute id="NearEndConfig.ProtectionModeMLCS" title="Protection" x="1" y="3"/>
+          <space x="2" y="0" weight="4.0,1.0"/>
+        </group>
+        <space x="1" y="2" weight="1.0,0.0"/>
+
+        <!-- Number of E1s, select individual E1s -->
+		<group id="NearEndConfig.ListOfE1sGroup" title="Number of %selected.moid.NearEndConfig.TribName%s" y="2" x="0" border="true" insets="0,0,0,0" weight="0.0,0.0" visible="false" lazy="true">
+          <attribute id = "NearEndConfig.ListOfE1s" y="1" title="Selected %selected.moid.NearEndConfig.TribName%s"/>
+          <attribute id=  "NearEndConfig.ListOfE1sActualAndDesiredDiffers" y="2" x="1" title="" visible="false" />
+        </group>
+
+
+         <!-- Alarms and Notifications part -->
+        <group title="Alarms and Notifications" y="3" x="0" border="true" insets="0,0,0,0" weight="0.0,0.0" >
+          <attribute id = "NearEndConfig.Notifications" y="0" title="Terminal Notifications"/>
+          <attribute id = "NearEndConfig.LowSlotInputAlarmThreshold" y="1" title="RF Input Alarm Threshold Ra1 (dBm)"/>
+          <attribute id = "NearEndConfig.HighSlotInputAlarmThreshold" y="2" x="1" title="RF Input Alarm Threshold Ra2 (dBm)" /> 
+          <attribute id = "NearEndConfig.FadeNotificationTimer" y="3" title="Fade Notification Timer"/>              
+          <attribute id = "NearEndConfig.BERThreshold" y="4" title="BER Alarm Threshold"/>
+          <!-- <attribute id="NearEndConfig.RLTxRemoteTxSwitchOver" y="5" title="Tx and Remote Tx Switch Over"/>  -->
+          <space x="2" y="0" weight="3.0,5.0"/>
+        </group>
+        
+        <!-- Switch Over Notification part -->
+		<group id="SwitchOverNotification" title="TX/Remote TX Switchover" y="4" x="0" border="true" insets="0,0,0,0" weight="0.0,0.0" visible="false" lazy="true">
+          <group y="0" >
+		  <attribute id="NearEndConfig.RLTxRemoteTxSwitchOver" y="0" x="1" title="TX/Remote TX Switchover Notifications and Remote TX Switchover functionality" />
+		  </group>
+		  <group y="1" >
+		  <label text="Note: TX Switchover functionality is always enabled." y="0" />
+		  </group>
+        </group>
+        
+        
+         <!-- Output power part -->
+        <group title="Output Power" x="0" y="5" border="true" weight="0.0,0.0" insets="0,0,0,0">
+          <group y="0" >
+            <attribute id = "NearEndConfig.LowSlotTxAttenuator" y="0" title="Tx Attenuator Ra1 (dB)"/>
+          </group>
+          <group id="NearEndHighSlotTxAttenuator" y="1" visible="false" x="0" >
+            <attribute id = "NearEndConfig.HighSlotTxAttenuator" y="0" title="Tx Attenuator Ra2 (dB)"/>  
+          </group> 
+          <space x="1" y="0" weight="3.0,2.0"/>      
+        </group>
+        <space x="1" y="2" weight="1.0,1.0"/>                  
+        
+        <!-- Output Power Fallback part -->
+        <group id="NEAR_ATPC_OUTPUT_POWER_FALLBACK" x="0" y="6" title="Output Power Fallback" border="true">
+			
+			<group x="0" y="1" id="NEAR_OUTPUT_POWER_FALLBACK_RADIO1">
+			<!-- RD 1 -->
+				<group x="0" y="0">
+					<attribute title="Enable ATPC Fallback(Ra1)" id="NearEndConfig.EnableLowSlotATPCFallback"/>    
+				</group>
+				<!-- CR1922 -->
+				<group x="0" y="1">
+					<attribute title=" ATPC Fallback Timer(Ra1)" id="NearEndConfig.LowSlotAtpcFallbackTimer" visible="false"/>    
+				</group>
+				<group x="0" y="2">
+					<attribute title="    Output Power Ra1(dBm)" id="NearEndConfig.LowSlotOutputPowerFallback"/>  
+				</group>	
+				<group x="1" y="2">
+					<attribute title="Max" id="NearEndConfig.LowSlotOutputPowerFallbackMax"/> 								         
+				</group>
+			</group>
+			<!-- RD 2 -->	
+			<group x="0" y="2" id="NEAR_OUTPUT_POWER_FALLBACK_RADIO2" visible="true">
+				<group x="0" y="0">
+					<attribute title="Enable ATPC Fallback(Ra2)" id="NearEndConfig.EnableHighSlotATPCFallback"/>    
+				</group>
+				<!-- CR1922 -->
+				<group x="0" y="1">
+					<attribute title=" ATPC Fallback Timer(Ra2)" id="NearEndConfig.HighSlotAtpcFallbackTimer" visible="false"/>    
+				</group>
+				
+				<group x="0" y="2">
+					<attribute title="    Output Power Ra2(dBm)" id="NearEndConfig.HighSlotOutputPowerFallback"/>  
+				</group>
+				<group x="1" y="2">
+					<attribute title="Max" id="NearEndConfig.HighSlotOutputPowerFallbackMax"/>
+				</group>
+			</group>
+        </group>
+        
+        <!-- DCN part   -->
+        <group title="DCN" x="0" id="DCNNear" y="7" border="true" weight="0.0,0.0" insets="0,0,0,0">
+          <attribute id="NearEndConfig.DCN_Only" title="DCN only" x="1" y="0"/>
+          <label text="This activates DCN without valid licenses" x="2" y="0" />
+        </group>
+        <space x="1" y="3" weight="1.0,1.0"/>
+        
+        
+              
+        <!-- ATPC capabilities part   -->
+        <group title="ATPC Capabilities" x="0" y="8" border="true" weight="0.0,0.0" insets="0,0,0,0">
+          <label y="0" /> <!-- empty row after the headline -->
+          <group title="Near End Radio Terminal" id="NearEndGroup" border="true" x="0" y="1" weight="0.0,0.0">
+            <group y="0" x="0">
+              <label y="0" text=""/>
+              <label y="1" text="  Terminal ID  %selected.moid.NearEndConfig.NearEndID%" id="NearEndConfig.NearEndID"/>
+            </group>
+            <group y="1" x="0">
+              <group y="0" x="0">
+                <label x="1" y="0" text="&lt;html&gt;&lt;b&gt;Unit&lt;/b&gt;&lt;/html&gt;"/>
+	              <attribute y="1" title = "" id = "NearEndConfig.LowSlotMMUMocMoi"/>
+	              <attribute y="2" title = "" id = "NearEndConfig.LowSlotRAUMocMoi"/>
+              </group>
+              <group id="NearEndHighATPCPresent" y="1" x="0" visible="false">
+	              <attribute y="3" title = "" id = "NearEndConfig.HighSlotMMUMocMoi"/>
+	              <attribute y="4" title = "" id = "NearEndConfig.HighSlotRAUMocMoi"/>
+              </group>
+            </group>
+            <group y="1" x="1">
+              <group y="0" x="0">
+	              <label x="1" y="0" text="&lt;html&gt;&lt;b&gt;ATPC&lt;/b&gt;&lt;/html&gt;"/>
+	              <attribute y="1" title = "" id = "NearEndConfig.MMULowATPCSupport"/>
+	              <attribute y="2" title = "" id = "NearEndConfig.RAULowATPCSupport"/>
+              </group>
+              <group id="NearEndHighATPCPresent" y="1" x="0" visible="false">
+	              <attribute y="3" title = "" id = "NearEndConfig.MMUHighATPCSupport"/>
+	              <attribute y="4" title = "" id = "NearEndConfig.RAUHighATPCSupport"/>
+              </group>
+            </group>
+          </group>
+      
+          <group y="1" title="Far End Radio Terminal" id="FarEndATPCNotAvailableGroup"  border="true" x="1" weight="0.0,0.0" visible="false">
+            <label y="0" /> <!-- empty row after the headline -->
+            <label text="No contact with far end Terminal!" y="1"/>
+          </group>
+        
+          <group y="1" title="Far End Radio Terminal" id="FarEndATPCAvailableGroup" border="true" x="1" weight="0.0,0.0" visible="false">
+            <label y="0" /> <!-- empty row after the headline -->
+            <group y="0" x="0">
+              <label y="0" text=""/>
+              <attribute y="1" title="Terminal ID" id="FarEndConfig.NearEndID"/>
+            </group>
+            <group y="1" x="0">
+              <group y="0" x="0">
+                <label x="1" y="0" text="&lt;html&gt;&lt;b&gt;Unit&lt;/b&gt;&lt;/html&gt;"/>
+                <attribute y="1" title = "" id = "FarEndConfig.LowSlotMMUMocMoi"/>
+                <attribute y="2" title = "" id = "FarEndConfig.LowSlotRAUMocMoi"/>
+              </group>
+              <group id="FarEndHighATPCPresent" y="1" x="0" visible="false">
+                <attribute y="3" title = "" id = "FarEndConfig.HighSlotMMUMocMoi"/>
+                <attribute y="4" title = "" id = "FarEndConfig.HighSlotRAUMocMoi"/>
+              </group>
+            </group>
+            <group x="1" y="1">
+             <group y="1" x="1">
+              <group y="0" x="0">
+                <label x="1" y="0" text="&lt;html&gt;&lt;b&gt;ATPC&lt;/b&gt;&lt;/html&gt;"/>
+                <attribute y="1" title = "" id = "FarEndConfig.MMULowATPCSupport"/>
+                <attribute y="2" title = "" id = "FarEndConfig.RAULowATPCSupport"/>
+              </group>
+              <group id="FarEndHighATPCPresent" y="1" x="0" visible="false">
+                <attribute y="3" title = "" id = "FarEndConfig.MMUHighATPCSupport"/>
+                <attribute y="4" title = "" id = "FarEndConfig.RAUHighATPCSupport"/>
+              </group>
+            </group>
+            </group>
+          </group>
+          
+        </group>
+        <space x="1" y="6" weight="1.0,1.0"/>
+         
+      </xgroup>
+      <!--  Near End Invisible parameters --> 
+      <group>
+        <attribute id=  "NearEndConfig.FarEndLowSlotBaseRxFrequency" y="5" title="Rx Base Freq. (MHz)" visible="false" />
+        <attribute id=  "NearEndConfig.FarEndLowSlotBaseTxFrequency" y="6" title="Tx Base Freq. (MHz)" visible="false" />
+        <attribute id=  "NearEndConfig.FarEndHighSlotBaseRxFrequency" y="7" title="Rx Base Freq. (MHz)" visible="false" />
+        <attribute id=  "NearEndConfig.FarEndHighSlotBaseTxFrequency" y="8" title="Tx Base Freq. (MHz)" visible="false" />
+        <attribute id = "NearEndConfig.LowSlotBaseRxFrequency" y="4" title="Rx Base Freq. (MHz)" visible="false"/>
+        <attribute id = "NearEndConfig.LowSlotBaseTxFrequency" y="5" title="Tx Base Freq. (MHz)" visible="false"/>
+        <attribute id = "NearEndConfig.HighSlotBaseRxFrequency" y="6" title="Rx Base Freq. (MHz)" visible="false"/>
+        <attribute id = "NearEndConfig.HighSlotBaseTxFrequency" y="7" title="Tx Base Freq. (MHz)" visible="false"/>
+        <attribute id = "NearEndConfig.BitPipeSupport" y="8" visible="false"/>
+        <attribute id = "NearEndConfig.ChannelSpacingNotBitpipeSupport" y="8" visible="false"/>        
+		<attribute id = "NearEndConfig.AdaptiveSupport" visible="false"/>
+        <attribute id = "NearEndConfig.AdaptiveManualMode" visible="false"/>
+        <attribute id = "NearEndConfig.LowSlotMMUOperStatus" y="9" visible="false"/>
+        <attribute id = "NearEndConfig.LowSlotMMUAdminStatus" y="10" visible="false"/>
+        <attribute id = "NearEndConfig.HighSlotMMUOperStatus" y="11" visible="false"/>
+        <attribute id = "NearEndConfig.HighSlotMMUAdminStatus" y="12" visible="false"/>
+        <attribute id = "NearEndConfig.LowSlotRAUOperStatus" y="113" visible="false"/>
+        <attribute id = "NearEndConfig.LowSlotRAUAdminStatus" y="14" visible="false"/>
+        <attribute id = "NearEndConfig.HighSlotRAUOperStatus" y="15" visible="false"/>
+        <attribute id = "NearEndConfig.HighSlotRAUAdminStatus" y="16" visible="false"/>
+        <attribute id = "NearEndConfig.TerminalMOID" y="17" visible="false"/>
+        <attribute id = "NearEndConfig.FarEndInContact" y="17" visible="false"/>
+        <attribute id = "NearEndConfig.IsMMU2CS" y="18" visible="false"/>
+        <attribute id = "FarEndConfig.FarEndInContact" visible="false"/>
+        <attribute id = "NearEndConfig.ATPCFallbackSupported" y="20" visible="false"/>
+        <attribute id = "NearEndConfig.FadingRatesSupported" y="21" visible="false"/>
+        <!-- CR1922 -->
+      	<attribute id = "NearEndConfig.LowSlotTermAtpcCapability" y="20" visible="false"/> 
+      	<attribute id = "NearEndConfig.HighSlotTermAtpcCapability" y="20" visible="false"/> 
+        
+        <attribute id = "NearEndConfig.LowSlotMMUInRepair" visible="false"/>
+        <attribute id = "NearEndConfig.HighSlotMMUInRepair" visible="false"/>
+        <attribute id = "NearEndConfig.LowSlotRAUInRepair" visible="false"/>
+        <attribute id = "NearEndConfig.HighSlotRAUInRepair" visible="false"/>
+        <attribute id="NearEndConfig.IsXpicSupportedInFarEnd" y="23" visible="false"/>
+        <attribute id = "NearEndConfig.ATPCFallBackSupportInOtherEnd" y="24" visible="false"/>
+        <attribute id = "NearEndConfig.BERThreshold" y="2" visible="false"/>
+        <!-- cr30459 -->
+    	<attribute id="NearEndConfig.ListOfE1Supported" y="25" visible="false"/>
+    	<attribute id = "NearEndConfig.RLTxRemoteTxSwitchOverAvailable" y="26" visible="false"/>
+    	<attribute id = "NearEndConfig.RLRAUSlotStateDesc" y="27" visible="false"/>
+    	
+    	
+      </group>
+    </group>
+    
+    
+    
+    <group y="0" x="1">
+    <!--  Far end parameters -->
+      
+      <!-- Display this when there is no contact with the far end terminal -->
+      <xgroup y="0" title="Far End Radio Terminal" id="FarEndInContactGroup" x="1" weight="1.0,0.0" visible="false">
+        <label y="0"/> <!-- empty row after the headline -->
+        <group y="1" x="0">
+          <label y="0" text=""/>
+          <label icon="16x16/Warning.gif" y="1" text="No contact with far end Terminal!"/>
+          <label y="2" text="Try to refresh the form, or maybe the transmitter(s) has been turned off."/>
+          <label y="3" text="Try to turn transmitter(s) on?"/>
+        </group>
+        <group y="2" x="0">
+          <group x="0" weight="0.0,0.0">
+            <button y="0" title="Transmitter(s) On" command="Mlcraft.SetAttributes(waitCursor:'TRUE',moid:'%selected.moid.FarEndConfig%','LowAndHighSlotTransmitterStatus':TRUE)"/>
+          </group>
+          <space x="1" weight="1.0,0.0"/>
+        </group>
+      </xgroup>
+      
+      <!-- Display this when far end terminal is in contact-->
+      <group y="0" id="FarEndUpper" visible="false">
+	      <xgroup title="Far End Radio Terminal" y="0" weight="0.0,0.0" expanded="false" lazy="true">
+	        <label y="0"/> <!-- empty row after the headline -->
+	                   
+	        <!-- Radio and MMU part part -->
+	        <group x="0" y="1" id="FarEndRadioAndMMU" weight="0.0,0.0" insets="0,0,0,0"> 
+	          <group title="Ra1" border="true" x="0" weight="0.0,0.0" insets="0,0,0,0">
+	            <label y="0" text="%selected.moid.FarEndConfig.LowSlotMMUMocMoi% %selected.moid.FarEndConfig.LowSlotMMUSlotNoInfo%" id="FarEndConfig.LowSlotMMUMocMoi"/>
+	            <label y="1" text="%selected.moid.FarEndConfig.LowSlotRAUMocMoi%" id ="FarEndConfig.LowSlotRAUMocMoi" />
+	          </group>
+	          <group title="Ra2" border="true" x="1" id="FarEndHighSlotRadioConfig" weight="0.0,0.0" insets="0,0,0,0" visible="false">
+	            <label y="0" text="%selected.moid.FarEndConfig.HighSlotMMUMocMoi% %selected.moid.FarEndConfig.HighSlotMMUSlotNoInfo%" id="FarEndConfig.HighSlotMMUMocMoi"/>
+	            <label y="1" text="%selected.moid.FarEndConfig.HighSlotRAUMocMoi%" id ="FarEndConfig.HighSlotRAUMocMoi" />
+	          </group>
+	          <group title="NE Name" border="true" x="2" weight="0.0,0.0" insets="0,0,0,0" >
+	            <attribute id = "FarEndConfig.FarEndName" y="0" title=""/>
+	          </group>
+	          <space x="3" y="0" weight="1.0,1.0"/>
+	        </group>
+	        <space x="1" y="1" weight="1.0,0.0"/>
+	         
+	         <!-- Terminal part   -->    
+	         <group x="0" y="2" title="Terminal" id="TerminalFarBasic" border="true" weight="0.0,0.0" insets="0,0,0,0">
+	           <attribute id="FarEndConfig.NearEndID" x="1" y="0" title="Terminal ID"/>
+	           <attribute id = "FarEndConfig.FarEndID" x="1" y="1" title="Far End ID"/>
+	           <attribute id = "FarEndConfig.RadioIdCheck" y="2" title="Radio ID Check"/>
+	           <licenselabel icon="../res/images/icons/16x16/mltn_license.gif" id="CapLicenseFar" text="" y="3"/>
+	           <!-- Support for SD capability -->
+	           <attribute id="FarEndConfig.ProtectionMode" title="Mode" x="1" y="3"/>
+	           <space x="2" y="0" weight="4.0,1.0"/>
+	         </group>
+	         <space x="1" y="1" weight="1.0,0.0"/>
+	        
+	        
+            <label id="FarEndConfig.AdaptiveManualModeText" x="0" y="3" text="&lt;html&gt;&lt;span style=color:red&gt;&lt;b&gt;NOTE: No Capacity attributes can be changed since Adaptive Modulation Mode is Manual&lt;/b&gt;&lt;/span&gt;&lt;/html&gt;" visible="false"/>
+	       
+	        <!-- Capacity part, if bit-pipe not supported -->
+	        <group title="Capacity" x="0" y="4" id="FarEndConfig.CapacityGroup" visible="false" border="true" weight="0.0,0.0" insets="0,0,0,0">
+	          <licenselabel icon="../res/images/icons/16x16/mltn_license.gif" id="CapLicenseFarCapacity" text="" y="0"/>
+              <space x="1" y="0" weight="0.1,2.0"/>
+              <attribute id="FarEndConfig.TrafficCapMod" x="2" y="0" title="Capacity &#8212; Modulation"/>
+	          <attribute id="FarEndConfig.HighSlotTrafficCapMod" visible="false" x="2" y="1"/>
+	          <space x="3" y="0" weight="2.0,2.0"/>
+	        </group>
+	        
+	        <!-- Capacity part, if bit-pipe is supported -->
+	        <group x="0" y="4" title="Capacity"
+	        	id="FarEndConfig.ChannelSpacingOrBitpipeGroup" visible="false"
+	        	border="true" weight="0.0,0.0" insets="0,0,0,0">
+
+	        	<!-- Use NearEndConfig to control that far end value will be set before near end -->
+	        	<group x="0" y="1" weight="0.0,0.0" insets="0,0,0,0" visible="true">
+	        		<group x="0" y="0" id="FarEndConfig.XpicGroup" weight="0.0,0.0" insets="0,0,0,0" visible="true">
+	        			<licenselabel id="FarEndXpicGroupIcon" icon="../res/images/icons/16x16/mltn_license.gif" x="0"	y="0" text="" />
+	        			<attribute id="FarEndConfig.Xpic" x="1" y="0" title="              Enable XPIC" />
+	        			<space x="1" weight="1.0,1.0" />
+	        		</group>
+	        		<space x="2" y="0" weight="1.0,0.0" />
+	        		<group x="3" y="0" id="AdaptiveGroup" weight="0.0,0.0" insets="0,0,0,0" visible="true">
+	        			<licenselabel id="FarEndAdaptiveGroupIcon" icon="../res/images/icons/16x16/mltn_license.gif" x="0"	y="0" text="" />
+	        			<space x="1" y="0" weight="1.0,0.0" />
+	        			<attribute id="FarEndConfig.Adaptive" x="2" y="0" title="Adaptive Modulation" />
+	        		</group>
+	        	</group>
+
+	        	<group y="2" weight="0.1,0.0" insets="0,0,0,0" visible="true">
+	        		<space y="0" weight="1.0,0.0" />
+	        		<group y="1" weight="0.0,0.0" insets="0,0,0,0" visible="true" anchor="center" ipadx="20">
+	        			<attribute id="FarEndConfig.ChannelSpacing"	x="2" y="0" title="Channel Spacing (MHz)" />
+	        			<attribute id="FarEndConfig.SpectrumEfficiencyClass" x="2" y="1" title="Reference Spectrum Efficiency Class" visible="true" />
+	        			<licenselabel id="MaxCapacityModulationGroupIcon" icon="../res/images/icons/16x16/mltn_license.gif" text="" y="2" />
+	        			<attribute id="FarEndConfig.MaxCapacityModulation" x="2" y="2" title="Max Capacity &#8212; Modulation" visible="true" />
+	        			<licenselabel id="CapacityModulationIcon" icon="../res/images/icons/16x16/mltn_license.gif" text="" y="3" />
+	        			<attribute id="FarEndConfig.BitPipeCapacityModulation" x="2" y="3" title="Capacity &#8212; Modulation" visible="true" />
+	        			<attribute id="FarEndConfig.MinBitPipeCapacityModulation" x="2" y="3" title="Min Capacity &#8212; Modulation" visible="false" />
+	        			<attribute id="FarEndConfig.FadingRates" x="2" y="4" visible="false" title="Fading Rates" />
+	        			<licenselabel id="FarEndConfig.NumberOfE1GroupIcon" icon="../res/images/icons/16x16/mltn_license.gif" text="" y="5" visible="true"/>
+	        			<attribute id="FarEndConfig.NumberOfE1" x="2" y="5" title="Number of %selected.moid.NearEndConfig.TribName%s" visible="true" />
+	        		</group>
+
+	        		<group y="6" id="EthernetCapacityGroup">
+	        			<space x="0" y="0"/>
+	        			<attribute id="FarEndConfig.EthernetCapacity" x="1" y="0" title="Packet Link Capacity (Config)" visible="false" />
+	        		</group>
+
+	        		<group y="7" id="MaxEthernetCapacityGroup">
+	        			<space x="0" y="0"/>
+	        			<attribute id="FarEndConfig.MaxEthernetCapacity" x="1" y="0" title="Max Packet Link Capacity (Config)" visible="true" />
+	        		</group>
+
+	        		<group y="8" id="MinEthernetCapacityGroup">
+	        			<space x="0" y="0"/>
+	        			<attribute id="FarEndConfig.EthernetCapacity" x="1" y="0" title="Min Packet Link Capacity (Config)" visible="false" />
+	        		</group>
+
+	        		<group y="9" id="FarEndActualAndDesiredDiffersGroup" weight="0.0,0.0" insets="0,0,0,0" visible="true">
+	        			<attribute id="FarEndConfig.ActualAndDesiredDiffers" y="1" x="1" title="" visible="false" />
+	        			<!--  Capability Row index is the actual value set in the node to indicate channel spacing, capacity and modulation-->
+	        			<attribute id="FarEndConfig.TerminalCapabilityRowIndex" y="2" visible="false" />
+	        			<attribute id="FarEndConfig.TerminalCapabilityMaxRowIndex" y="3" visible="false" />
+	        			<attribute id="FarEndConfig.ActualNumberOfE1" y="4" visible="false" />
+	        			<attribute id="FarEndConfig.DesiredNumberOfE1" y="5" visible="false" />
+	        			<attribute id="FarEndConfig.ActualEthernetCapacity" y="6" visible="false" />
+	        			<attribute id="FarEndConfig.TribName" y="7" visible="false" />
+	        			<attribute id="FarEndConfig.TribName" y="8" visible="false" />
+	        		</group>
+
+	        		<group y="10" id="PacketLinkCapacityGroup" weight="0.0,0.0" insets="0,0,0,0" visible="false">
+	        			<licenselabel id="FarEndPacketLinkCapacityGroupIcon" icon="../res/images/icons/16x16/mltn_license.gif" text="" y="0" />
+	        			<attribute id="FarEndConfig.PacketLinkCapacity" x="1" y="0" title="Packet Link Capacity" visible="true" />
+	        		</group>
+	        	</group>
+	        	<space x="2" y="0" weight="4.0,1.0" />
+	        </group>
+
+	        <space x="1" y="2" weight="1.0,0.0"/>
+	               
+	        <!-- RF part  -->
+	        <group x="0" y="5" title="RF" border="true" weight="0.0,0.0" insets="0,0,0,0">
+	          <group x="0" weight="0.0,0.0" insets="0,0,0,0">
+              <label text="&lt;html&gt;&lt;b&gt;Ra1&lt;/b&gt;&lt;/html&gt;" x="1" anchor="east" />
+              <!-- Use NearEndConfig to control that far end value will be set before near end -->
+              <attribute id = "NearEndConfig.FarEndLowSlotTxFrequency" y="1" title="Tx Freq. (MHz)"/>
+              <attribute id = "NearEndConfig.FarEndLowSlotRxFrequency" y="2" title="Rx Freq. (MHz)"/>
+              <attribute id = "FarEndConfig.LowSlotPowerMode" y="3" title="Output Power Mode"/>
+              <attribute id = "FarEndConfig.LowSlotOutputPower" y="4" title="Output Power (dBm)"/>
+              <attribute id=  "FarEndConfig.LowSlotAtpcMaxOutputPower" y="5"  title="Max Output Power (dBm)"/>
+              <attribute id=  "FarEndConfig.LowSlotAtpcSelectedInputPowerFar" y="6" title="&lt;html&gt;&lt;nobr&gt;Target Input Power&lt;br&gt;for Far End (dBm)&lt;/nobr&gt;&lt;/html&gt;"/>
+              <attribute id = "NearEndConfig.FarEndLowSlotTransmitterStatus" y="7" title="Transmitter On"/>
+	          </group>
+	          <group x="1" id="FarEndHighSlotRFConfig" weight="0.0,0.0" insets="0,0,0,0" visible="false">
+              <label text="&lt;html&gt;&lt;b&gt;Ra2&lt;/b&gt;&lt;/html&gt;" x="1"/>
+              <group id="FarEndHighSlotAlignSpaceWhenInSD" y="1" insets="27,0,0,0" visible="false">
+                  <space />
+              </group>
+              <!-- Use NearEndConfig to control that far end value will be set before near end -->
+              <attribute id = "NearEndConfig.FarEndHighSlotTxFrequency"  y="1" title=""/>
+              <attribute id = "NearEndConfig.FarEndHighSlotRxFrequency" y="2" title=""/>
+              <attribute id = "FarEndConfig.HighSlotPowerMode" y="3" title=""/>
+              <attribute id = "FarEndConfig.HighSlotOutputPower" y="4" title=""/>
+              <attribute id=  "FarEndConfig.HighSlotAtpcMaxOutputPower" y="5"  title=""/>
+              <attribute id=  "FarEndConfig.HighSlotAtpcSelectedInputPowerFar" y="6" title="&lt;html&gt;&lt;font color='white'&gt;a&lt;br&gt;a&lt;/font&gt;&lt;/html&gt;"/>
+              <attribute id = "NearEndConfig.FarEndHighSlotTransmitterStatus"  y="7" title=""/>
+	          </group>
+	          <space x="2" y="0" weight="1.0,0.0"/>
+	        </group>
+	        <space x="1" y="3" weight="1.0,1.0"/> 
+	        
+	        
+	        <!-- XPIC part  -->
+	        <group title="XPIC" id="FarEndConfig.XpicGroup" y="6" border="true" visible="false">
+	           <group id="FarEndLowSlotXpicConfig" x="0" y="0" weight="0.0,0.0">
+	             <attribute id = "FarEndConfig.LowSlotMMUMocMoi" y="0" title=""/>
+	             <attribute id = "FarEndConfig.LowSlotXpicCompanionSlot" y="2" title="Companion Pos"/>
+	             <attribute id = "FarEndConfig.LowSlotMMUXpicSupport" y="3" visible="false"/>
+	           </group>
+	           <group id="HighSlotXpicConfig" x="1" y="0" weight="0.0,0.0">
+	             <attribute id = "FarEndConfig.HighSlotMMUMocMoi" y="0" title=""/>
+	             <attribute id = "FarEndConfig.HighSlotXpicCompanionSlot" y="2" title=""/>
+	             <attribute id = "FarEndConfig.HighSlotMMUXpicSupport" y="3" visible="false"/>
+	           </group>
+	           <space x="2" y="0" weight="1.0,0.0"/>
+	           <group id="FarEndXpicRestore" x="0" y="1">
+	             <button id="XpicRestoreButton" title="Restore XPIC after Fault" 
+	                 command="Mgt.SetAttributes(moid:'%selected.moid.FarEndConfig%','XPICRestore':1)"
+	                 y="0" visible="false" onClick="refresh"/>
+	               <attribute id="FarEndConfig.TerminalMOID" visible="false"/>
+	               <attribute id="FarEndConfig.ChannelModeOperStatus" visible="false"/>
+	           </group>
+	       </group>
+	       <space x="1" y="4" weight="1.0,1.0"/> 
+	      </xgroup>
+      
+	      <!--  Far End Advanced Parameters starts here -->
+	      <xgroup title="Advanced" y="1" expanded="false" lazy="true">
+	        <label y="0" /> <!-- empty row after the headline -->
+	        
+	         <!-- Terminal part   -->  
+	         <!-- If Near End is a MLCS node the Terminal group shall be Advanced settings -->  
+	         <group x="0" y="1" title="Terminal" id="TerminalFarAdvanced" visible="false" border="true" weight="0.0,0.0" insets="0,0,0,0">
+	           <attribute id="FarEndConfig.NearEndID" x="1" y="0" title="Terminal ID"/>
+	           <attribute id = "FarEndConfig.FarEndID" x="1" y="1" title="Far End ID"/>
+	           <attribute id = "FarEndConfig.RadioIdCheck" y="2" title="Radio ID Check"/>
+	           <attribute id="FarEndConfig.ProtectionModeMLCS" title="Protection" x="1" y="3"/>
+	           <space x="2" y="0" weight="4.0,1.0"/>
+	         </group>
+	         <space x="1" y="1" weight="1.0,0.0"/>
+
+             <!-- Number of E1s, select individual E1s -->
+             <group id="FarEndConfig.ListOfE1sGroup" title="Number of %selected.moid.NearEndConfig.TribName%s" y="2" x="0" border="true" insets="0,0,0,0" weight="0.0,0.0" visible="false" lazy="true">
+               <attribute id = "FarEndConfig.ListOfE1s" y="1" title="Selected %selected.moid.NearEndConfig.TribName%s"/>
+               <attribute id=  "FarEndConfig.ListOfE1sActualAndDesiredDiffers" y="2" x="1" title="" visible="false" />
+             </group>
+
+	     	<!-- Alarm and Notification part   -->
+	        <group title="Alarms and Notifications" y="3" x="0" border="true" insets="0,0,0,0" weight="0.0,0.0">
+	          <attribute id="FarEndConfig.Notifications" y="0" title="Terminal Notifications" />     
+	          <attribute id="FarEndConfig.LowSlotInputAlarmThreshold" y="1" title="RF Input Alarm Threshold Ra1 (dBm)" />
+	          <attribute id="FarEndConfig.HighSlotInputAlarmThreshold" y="2" x="1" title="RF Input Alarm Threshold Ra2 (dBm)" />     
+	          <attribute id="FarEndConfig.BERThreshold" y="3" title="BER Alarm Threshold" />  
+	          <!-- <attribute id="FarEndConfig.RLTxRemoteTxSwitchOver" y="4" title="Tx and Remote Tx Switch Over"/>  -->
+	          <space x="2" y="0" weight="3.0,5.0"/>   
+	        </group>
+	        
+	        <!-- Switch Over Notification part -->
+			<group id="FarEndSwitchOverNotification" title="TX/Remote TX Switchover" y="4" x="0" border="true" insets="0,0,0,0" weight="0.0,0.0" visible="false" lazy="true">
+			<group y="0" >
+				<attribute id="FarEndConfig.RLTxRemoteTxSwitchOver" y="0" x="1" title="TX/Remote TX Switchover Notifications and Remote TX Switchover functionality" />
+			</group>
+			<group y="1" >
+				<label text="Note: TX Switchover functionality is always enabled." y="0" />
+			</group>
+			</group>
+	               
+	        <!-- Output power part   -->
+	        <group id = "OutputPowerGroupFar" title="Output Power" x="0" y="5" border="true" weight="0.0,0.0" insets="0,0,0,0">
+	          <group y="0" >
+	          <attribute id="FarEndConfig.LowSlotTxAttenuator" y="0" title="Tx Attenuator Ra1 (dB)" />
+	          </group>
+	          <group id="FarEndHighSlotTxAttenuator" y="1" visible="false" x="0">
+	            <attribute id="FarEndConfig.HighSlotTxAttenuator" y="0" title="Tx Attenuator Ra2 (dB)" />  
+	          </group>
+	          <space x="1" y="0" weight="3.0,2.0"/>            
+	        </group>
+	        <space x="1" y="2" weight="1.0,1.0" />
+	        
+	         <!-- Output Power Fallback part -->
+	        <group id="FAR_ATPC_OUTPUT_POWER_FALLBACK" x="0" y="6" title="Output Power Fallback" border="true" weight="0.0,0.0" insets="0,0,0,0" visible="false">
+				<!-- RD 1 -->
+				<group x="0" y="1" id="FAR_OUTPUT_POWER_FALLBACK_RADIO1">
+					<group x="0" y="0">
+						<attribute title="Enable ATPC Fallback(Ra1)" id="FarEndConfig.EnableLowSlotATPCFallback"/>    
+					</group>
+					<!-- CR1922 -->
+					<group x="0" y="1">
+						<attribute title=" ATPC Fallback Timer(Ra1)" id="FarEndConfig.LowSlotAtpcFallbackTimer" visible="false"/>    
+					</group>
+					<group x="0" y="2">
+						<attribute title="    Output Power Ra1(dBm)" id="FarEndConfig.LowSlotOutputPowerFallback"/>  
+					</group>
+					<group x="1" y="2">
+						<attribute title="Max" id="FarEndConfig.LowSlotOutputPowerFallbackMax"/>
+					</group>
+				</group>
+				<!-- RD 2 -->	
+				<group x="0" y="2" id="FAR_OUTPUT_POWER_FALLBACK_RADIO2" visible="true">
+					<group x="0" y="0">
+						<attribute title="Enable ATPC Fallback(Ra2)" id="FarEndConfig.EnableHighSlotATPCFallback"/>    
+					</group>
+					<!-- CR1922 -->
+					<group x="0" y="1">
+						<attribute title=" ATPC Fallback Timer(Ra2)" id="FarEndConfig.HighSlotAtpcFallbackTimer" visible="false"/>    
+					</group>
+					<group x="0" y="2">
+						<attribute title="    Output Power Ra2(dBm)" id="FarEndConfig.HighSlotOutputPowerFallback"/>  
+					</group>	
+					<group x="1" y="2">
+						<attribute title="Max" id="FarEndConfig.HighSlotOutputPowerFallbackMax"/> 								         
+					</group>
+				</group>
+	        </group>
+	        
+	        <!--DCN part   -->       
+	        <group title="DCN" id="DCNFar" x="0" y="7" border="true" weight="0.0,0.0" insets="0,0,0,0">
+	          <attribute id="FarEndConfig.DCN_Only" title="          DCN only" x="1" y="0" />
+	          <label text="This activates DCN without valid licenses" x="2" y="0" />
+	        </group>
+	        <space x="1" y="3" weight="1.0,1.0" />
+	        
+	        <space y="3" weight="1.0,1.0" />
+	      </xgroup>
+	
+      </group>
+            <!-- Far End Invisible parameters -->
+	      <group> 
+	         
+	         <attribute id="FarEndConfig.FarEndInContact" visible="false" y="9" />
+	         <attribute id="FarEndConfig.LowSlotMMUOperStatus" y="9" visible="false" />
+	         <attribute id="FarEndConfig.LowSlotMMUAdminStatus" y="10" visible="false" />
+	         <attribute id="FarEndConfig.HighSlotMMUOperStatus" y="11" visible="false" />
+	         <attribute id="FarEndConfig.HighSlotMMUAdminStatus" y="12" visible="false" />
+	         <attribute id="FarEndConfig.LowSlotRAUOperStatus" y="113" visible="false" />
+	         <attribute id="FarEndConfig.LowSlotRAUAdminStatus" y="14" visible="false" />
+	         <attribute id="FarEndConfig.HighSlotRAUOperStatus" y="15" visible="false" />
+	         <attribute id="FarEndConfig.HighSlotRAUAdminStatus" y="16" visible="false" />
+	         <attribute id="FarEndConfig.TerminalMOID" y="17" visible="false" />	
+             <attribute id="FarEndConfig.BitPipeSupport" y="10" visible="false" />
+             <attribute id="FarEndConfig.ChannelSpacingNotBitpipeSupport" y="10" visible="false" />
+             <attribute id="FarEndConfig.AdaptiveSupport" visible="false"/>
+             <attribute id="FarEndConfig.AdaptiveManualMode" visible="false"/>
+             <attribute id="FarEndConfig.IsMMU2CS" y="18" visible="false"/>
+             <attribute id="FarEndConfig.IsFarEndMMU" y="20" visible="false"/>         
+    		 <attribute id="FarEndConfig.ProtectionMode" y="19" visible="false"/>
+    		 <attribute id="FarEndConfig.ATPCFallbackSupported" y="21" visible="false"/>
+    		 <attribute id="FarEndConfig.IsXpicSupportedInNearEnd" y="22" visible="false"/>
+    		 <attribute id="FarEndConfig.ATPCFallBackSupportInOtherEnd" y="23" visible="false"/>
+    		 <!-- CR1922 -->
+      		 <attribute id = "FarEndConfig.LowSlotTermAtpcCapability" y="20" visible="false"/> 
+      		 <attribute id = "FarEndConfig.HighSlotTermAtpcCapability" y="20" visible="false"/> 
+    		 <attribute id="FarEndConfig.IsFarEndMLCN" y="24" visible="false"/>
+    		 <!-- cr30459 -->
+    		 <attribute id="FarEndConfig.ListOfE1Supported" y="25" visible="false"/>
+    		 <attribute id = "FarEndConfig.RLTxRemoteTxSwitchOverAvailable" y="26" visible="false"/>
+    		 <attribute id = "FarEndConfig.FadingRatesSupported" y="27" visible="false"/>
+    		 <attribute id = "FarEndConfig.Xpic" y="28" visible="false"/>
+    		 <attribute id = "FarEndConfig.IsXpicSupportedInFarEnd" y="29" visible="false"/>
+	       </group>
+      
+    </group>   
+
+  <space y="2" weight="1.0,1.0"/>  
+</form>
+    
+    

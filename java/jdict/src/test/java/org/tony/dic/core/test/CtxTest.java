@@ -2,7 +2,7 @@ package org.tony.dic.core.test;
 
 import org.junit.Assert;
 import org.junit.Test;
-import org.tony.dic.core.Ctx;
+import org.tony.opendict.core.Ctx;
 
 public class CtxTest {
 	
