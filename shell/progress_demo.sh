@@ -1,6 +1,5 @@
 #!/bin/bash  
 i=0 
-echo -ne "[\033[s"
 while [ $i -lt 20 ]  
 do  
     ((i++))  
