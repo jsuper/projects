@@ -29,12 +29,16 @@ class Token:
         self.value.append(value)
         self.end = end
         self.line = line
+        self.pure_value = None
 
     def append(self, char):
         self.value.append(char)
 
     def get_value(self):
-        return ''.join(self.value)
+        if not self.pure_value:
+            self.pure_value = ''.join(self.value)            
+
+        return self.pure_value
 
     def __str__(self):
         return self.get_value()
@@ -114,7 +118,51 @@ def html_parser(html_file_path):
     
     return tokens;
 
-
+def parse_tags(tokens):
+    '''
+    parse tokens to html tag
+    '''
+    html_tags = []
+    html_node = None
+    html_node_attribute_start = False
+    html_tag_name = None
+    while len(tokens) > 0 :
+        current = tokens.pop(0)
+        if current == '<':
+            next_tag_name = tokens.pop(0).get_value()
+            if not html_node:
+                html_tag_name = []
+                html_tag_name.append(next_tag_name)
+                html_node_attribute_start = True
+            else:
+                if next_tag_name.startswith('/') and next_tag_name[1:] == html_node.name:
+                    #handling the tag close
+                    html_node.tag_closed = True
+                    pre_node = html_tags.pop()
+                    if not pre_node.tag_closed:
+                        pre_node.append(html_node)
+                        html_tags.append(pre_node)
+                    else:
+                        html_tags.append(pre_node)
+                        html_tags.append(html_node)
+                    html_node = None
+        elif current == '/':
+            #handling self closed tag
+            next_tag_name = tokens.pop(0).get_value()
+            if next_tag_name == '>' and html_node:
+                html_node.is_self_closed_tag = True
+                html_node.tag_closed = True
+                pre_node = html_tags.pop()
+                if not pre_node.tag_closed:
+                    pre_node.append(html_node)
+                    html_tags.append(pre_node)
+                else:
+                    html_tags.append(pre_node)
+                    html_tags.append(html_node)
+                html_node = None
+                    
+            
+        
 if '__main__'  == __name__:
     tokens = html_parser('html.html')
     for t in tokens:

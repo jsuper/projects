@@ -17,6 +17,9 @@ opf_format_tpl = '''<?xml version="1.0" encoding="utf-8" standalone="yes"?>
 </package>
 '''
 
+opf_manifest_item_tpl = '''<item href="{0}" id="{1}" media-type="{2}" />\n'''
+opf_spine_toc_item_tpl = '''<itemref idref="{0}" />\n'''
+
 toc_format_tpl='''<?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE ncx PUBLIC "-//NISO//DTD ncx 2005-1//EN"
  "http://www.daisy.org/z3986/2005/ncx-2005-1.dtd">
@@ -42,4 +45,12 @@ toc_nav_item_tpl='''    <navPoint id="navPoint-{0}" playOrder="{0}">
       </navLabel>
       <content src="{2}" />
     </navPoint>
+'''
+
+container_xml_tpl = '''<?xml version="1.0" encoding="UTF-8" ?>
+<container version="1.0" xmlns="urn:oasis:names:tc:opendocument:xmlns:container">
+   <rootfiles>
+      <rootfile full-path="OPS/content.opf" media-type="application/oebps-package+xml"/>
+   </rootfiles>
+</container>
 '''
