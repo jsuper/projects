@@ -13,7 +13,6 @@ opf_format_tpl = '''<?xml version="1.0" encoding="utf-8" standalone="yes"?>
   <spine toc="ncx">
     {4}
   </spine>
-  <guide />
 </package>
 '''
 
@@ -35,9 +34,8 @@ toc_format_tpl='''<?xml version="1.0" encoding="utf-8"?>
   </docTitle>
   <navMap>
      {2}
-  <navMap>
-</ncx>
-'''
+  </navMap>
+</ncx>'''
 
 toc_nav_item_tpl='''    <navPoint id="navPoint-{0}" playOrder="{0}">
       <navLabel>

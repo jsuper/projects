@@ -110,7 +110,7 @@ class Epub():
         '''
         export to *.epub
         '''
-        export_name = self.title+'.epub'
+        export_name = self.title.replace(' ','_')+'.epub'
         epub = zipfile.ZipFile(pjoin(self.output_dir, export_name), 'w', zipfile.ZIP_DEFLATED)
         for root, dirs, files in walk(self.output_dir):
             for fname in files:
@@ -149,5 +149,5 @@ class Epub():
 
 
 if '__main__' == __name__:
-    sicp = Epub('C:/Users/tangilin/Desktop/EbookMaker/sicp_dl','sicp')
+    sicp = Epub('C:/Users/tangilin/Desktop/EbookMaker/sicp_dl','Structure and Interpretation of Computer Programs')
     sicp.generate()
